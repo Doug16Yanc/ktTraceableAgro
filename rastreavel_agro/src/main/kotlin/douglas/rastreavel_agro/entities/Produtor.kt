@@ -3,6 +3,8 @@ package douglas.rastreavel_agro.entities
 import jakarta.persistence.*
 import javax.annotation.processing.Generated
 
+@Entity
+@Table(name = "produtor")
 data class Produtor(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

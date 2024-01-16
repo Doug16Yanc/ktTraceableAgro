@@ -1,16 +1,15 @@
 package douglas.rastreavel_agro.entities
 
-import jakarta.persistence.Column
-import jakarta.persistence.GeneratedValue
-import jakarta.persistence.GenerationType
-import jakarta.persistence.Id
-import jakarta.persistence.ManyToOne
+import jakarta.persistence.*
 import java.time.LocalDate
+import java.util.UUID
 
+@Entity
+@Table(name = "animal")
 data class Animal(
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var idAnimal: Long? = null,
+    @Column(nullable = false, unique = true)
+    var idAnimal: UUID = UUID.randomUUID(),
     @Column(nullable = false)
     var peso : Double = 0.0,
     @Column(nullable = false)
