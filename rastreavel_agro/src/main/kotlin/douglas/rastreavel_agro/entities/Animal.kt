@@ -4,6 +4,7 @@ import jakarta.persistence.Column
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
+import jakarta.persistence.ManyToOne
 import java.time.LocalDate
 
 data class Animal(
@@ -21,5 +22,7 @@ data class Animal(
     @Column(nullable = false)
     var indexNatal : Double = 0.0,
     @Column(nullable = false)
-    var indexMortal : Double = 0.0
+    var indexMortal : Double = 0.0,
+    @ManyToOne
+    var produtor : Produtor? = null
 )

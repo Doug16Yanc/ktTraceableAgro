@@ -1,10 +1,6 @@
 package douglas.rastreavel_agro.entities
 
-import jakarta.persistence.Column
-import jakarta.persistence.Embedded
-import jakarta.persistence.Id
-import jakarta.persistence.GeneratedValue
-import jakarta.persistence.GenerationType
+import jakarta.persistence.*
 import javax.annotation.processing.Generated
 
 data class Produtor(
@@ -25,5 +21,6 @@ data class Produtor(
     @Embedded
     var localidade : Localidade = Localidade(1, "", ""),
     @Column(nullable = false)
+    @OneToMany
     var animais : List<Animal> = mutableListOf()
 )
