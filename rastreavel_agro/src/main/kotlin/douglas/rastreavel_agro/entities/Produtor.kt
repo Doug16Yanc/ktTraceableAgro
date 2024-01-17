@@ -23,6 +23,6 @@ data class Produtor(
     @Embedded
     var localidade : Localidade = Localidade(1, "", ""),
     @Column(nullable = false)
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY, cascade = arrayOf(CascadeType.REMOVE, CascadeType.PERSIST), mappedBy = "produtor")
     var animais : List<Animal> = mutableListOf()
 )
