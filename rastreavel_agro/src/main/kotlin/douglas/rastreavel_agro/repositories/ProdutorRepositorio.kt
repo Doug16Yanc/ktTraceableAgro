@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 
 @Repository
-interface ProdutorRepositorio : JpaRepository<Long, Produtor> {
+interface ProdutorRepositorio : JpaRepository<Produtor, Long> {
 }

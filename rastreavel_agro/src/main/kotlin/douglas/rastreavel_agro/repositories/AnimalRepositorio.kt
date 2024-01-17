@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository
 import java.util.*
 
 @Repository
-interface AnimalRepositorio : JpaRepository<UUID, Animal> {
+interface AnimalRepositorio : JpaRepository<Animal, UUID> {
     @Query("SELECT animal FROM Animal animal WHERE animal.idAnimal = :idAnimal")
     fun encontrarPorIdAnimal(@Param("idAnimal") idAnimal: UUID) : Animal
 
