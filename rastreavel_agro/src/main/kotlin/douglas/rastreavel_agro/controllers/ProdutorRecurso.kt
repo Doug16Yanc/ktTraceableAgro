@@ -11,7 +11,7 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
 @RestController
-@RequestMapping("/produtores")
+@RequestMapping("/produces")
 class ProdutorRecurso(
     private val servicoProdutor : ServicoProdutor
 ){
@@ -31,10 +31,14 @@ class ProdutorRecurso(
         this.servicoProdutor.deletaProdutor(Id)
     }
     @PatchMapping
-    fun updateCustomer(@RequestParam(value = "produtorId") id : Long, @RequestBody @Valid produtorUpdateDto : ProdutorUpdateDTO) : ResponseEntity<ProdutorVisu> {
-        val produtor = this.servicoProdutor.encontraPorId(id)
-        val produtorToUpdate : Produtor = produtorUpdateDto.toEntity(produtor)
-        val produtorUpdated = this.servicoProdutor.salvaProdutor(produtorToUpdate)
-        return ResponseEntity.status(HttpStatus.OK).body(ProdutorVisu(produtorUpdated))
+    fun mudaDadosProdutor(@RequestParam(value = "produtorId") id : Long, @RequestBody @Valid produtorUpdateDto : ProdutorUpdateDTO) : ResponseEntity<ProdutorVisu> {
+        try {
+            val produtor = this.servicoProdutor.encontraPorId(id)
+            val produtorToUpdate: Produtor = produtorUpdateDto.toEntity(produtor)
+            val produtorUpdated = this.servicoProdutor.salvaProdutor(produtorToUpdate)
+            return ResponseEntity.status(HttpStatus.OK).body(ProdutorVisu(produtorUpdated))
+        } catch (e : NoSuchElementException){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build()
+        }
     }
 }

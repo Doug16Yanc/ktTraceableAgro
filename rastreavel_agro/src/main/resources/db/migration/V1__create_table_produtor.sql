@@ -14,3 +14,5 @@ CREATE TABLE produtor (
 ALTER TABLE produtor ADD CONSTRAINT uc_produtor_cpf UNIQUE (cpf);
 
 ALTER TABLE produtor ADD CONSTRAINT uc_produtor_email UNIQUE (email);
+
+INSERT INTO produtor VALUES (1, 'Douglas', 'Holanda', '06756789089', 'doug@gmail.com', '345', 1, 'Sede', 'Pedra Branca');
